@@ -1,0 +1,27 @@
+server:
+  port: 7009
+spring:
+  application:
+    # 微服务名称
+    name: guagua-order
+  cloud:
+    nacos:
+      # 服务注册信息
+      discovery:
+        server-addr: 106.13.235.136:8848
+        namespace: guagua-cloud
+        username: nacos
+        password: nacos
+
+# dubbo配置信息
+dubbo:
+  scan:
+    # 指定 Dubbo 服务实现类的扫描基准包
+    base-packages: com.dblcy.order.service
+  protocol:
+    # dubbo 协议端口（ -1 表示自增端口，从 20880 开始）
+    name: dubbo
+    port: -1
+  cloud:
+    # 指定需要订阅的服务提供方，默认值*，会订阅所有服务，不建议使用
+    subscribed-services: guagua-system
